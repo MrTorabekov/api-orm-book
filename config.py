@@ -1,15 +1,19 @@
-from pydantic_settings import BaseSettings
-from functools import lru_cache
 from typing import Optional
 
+from pydantic_settings import BaseSettings
+from functools import lru_cache
+
+
 class Settings(BaseSettings):
+    app_name: str = "fastapi_app"
+    app_debug: bool = False
+    app_version: str = "0.0.1"
+
     db_host: str
     db_port: int
     db_user: str
     db_password: str
     db_name: str
-
-    token: Optional[str] = None
 
     class Config:
         env_file = ".env"

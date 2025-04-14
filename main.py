@@ -1,10 +1,13 @@
-from fastapi import FastAPI, HTTPException
+import asyncio
+from http.client import responses
 
-from config import get_settings
 from db import init_db
-from models.user import User
-from schemas.base import BaseResponse
+from config import get_settings
+from fastapi import FastAPI, HTTPException
 from schemas.user import BaseUser
+from schemas.base import BaseResponse
+from models.user import User
+
 
 settings = get_settings()
 
@@ -15,6 +18,15 @@ app = FastAPI(
     description="FastApi CRUD Tortoise-orm with aerich",
     debug=settings.app_debug
 )
+
+
+
+
+@app.get("/api/user")
+def read_user():
+    return {"message": "Hello User!"}
+
+
 
 
 
@@ -109,20 +121,3 @@ async def delete_user(user_id: int):
 
     await user.delete()
     return BaseResponse(data={"id": user_id})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
