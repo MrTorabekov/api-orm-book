@@ -36,7 +36,9 @@ async def startup():
     print("DB Connected ✅")
 
 
-
+@app.get("/info")
+async def information():
+    return {"message":"hello world"}
 
 @app.get("/user/{user_id}", response_model=BaseResponse)
 async def get_user(user_id: int):

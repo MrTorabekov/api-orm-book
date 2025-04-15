@@ -4,7 +4,7 @@ from starlette.testclient import TestClient
 client = TestClient(app)
 
 
-def test_read_user():
-    response = client.get("/api/user")
+def test_information():
+    response = client.get("/info")
     assert response.status_code == 200
-    assert response.json() == {"message": "Hello User!"}
+    assert response.json() == {"message":"hello world"}
