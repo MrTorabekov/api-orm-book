@@ -38,7 +38,8 @@ async def startup():
 
 @app.get("/info")
 async def information():
-    return {"message":"hello world"}
+    return {"message":"hello teacher"}
+
 
 @app.get("/user/{user_id}", response_model=BaseResponse)
 async def get_user(user_id: int):
